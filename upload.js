@@ -33,7 +33,7 @@ async function uploadPhotos(){
 
 		// Send upload request
 		// Do we upload as text/base64??
-		var params = {"object" : img.name, "bucket" : "hw2-intelligent-photo-album", "Content-Type" : img.type, 'x-amz-meta-customLabels': customLabel};
+		var params = {"object" : img.name, "bucket" : "s3photoalbumforbigdataclass", "Content-Type" : img.type, 'x-amz-meta-customLabels': customLabel};
 		var response = await apiClient.uploadBucketObjectPut(params, img_base64, {})
 		console.log(response)
 
