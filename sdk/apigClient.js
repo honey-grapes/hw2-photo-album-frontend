@@ -122,12 +122,12 @@ apigClientFactory.newClient = function (config) {
     apigClient.uploadBucketObjectPut = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['object', 'bucket', 'Content-Type', 'x-amz-meta-customLabels'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['Content-Type', 'x-amz-meta-customLabels', 'object', 'bucket'], ['body']);
         
         var uploadBucketObjectPutRequest = {
             verb: 'put'.toUpperCase(),
-            path: pathComponent + uritemplate('/upload/{bucket}/{object}').expand(apiGateway.core.utils.parseParametersToObject(params, ['object', 'bucket', ])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, ['Content-Type', 'x-amz-meta-customLabels']),
+            path: pathComponent + uritemplate('/upload/{bucket}/{object}').expand(apiGateway.core.utils.parseParametersToObject(params, ['object', 'bucket'])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, ['Content-Type', 'x-amz-meta-customLabels', ]),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
